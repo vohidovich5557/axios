@@ -1,7 +1,8 @@
-import axios from "axios";
+
 import React from "react";
 import {useForm} from 'react-hook-form';
 import { toast } from "react-toastify";
+import { request } from "../../config/request";
 
 
 
@@ -16,7 +17,7 @@ export const Form = ({reFetch}) => {
     } = useForm();
 
     const submit  = (data) => {
-        axios.post("http://localhost:3600/todos", data).then((res) => {
+        request.post("/todos", data).then((res) => {
             console.log(res.data);
             toast.success("omadli joylandi");
             reFetch();

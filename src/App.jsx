@@ -1,9 +1,9 @@
 import React from "react";
-import axios from 'axios';
+import { request } from "./config/request";
 import { Card } from "./component/card";
 import {ToastContainer} from 'react-toastify';
 import { Form } from "./component/form";
-import { get } from "react-hook-form";
+
 
 
 
@@ -14,7 +14,7 @@ function App() {
  
 
   const getData = () => {
-    axios.get("http://localhost:3600/todos").then((res) => {
+    request.get("/todos").then((res) => {
       setData(res.data)
     });
   };

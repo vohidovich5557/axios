@@ -1,6 +1,6 @@
-import axios from "axios";
 import React from "react";
 import {toast} from 'react-toastify';
+import { request } from "../../config/request";
 
 
 
@@ -8,7 +8,7 @@ import {toast} from 'react-toastify';
 export const Card = ({title, id, desc, reFetch}) => {
 
     const deletTodo = () => {
-        axios.delete(`http://localhost:3600/todos/${id}`).then((res) => {
+        request.delete(`/todos/${id}`).then((res) => {
             console.log(res);
             toast.success("ochdi ukam");
             reFetch();
@@ -17,7 +17,7 @@ export const Card = ({title, id, desc, reFetch}) => {
     };
 
     const editTodo = () => {
-        axios.get(`http://localhost:3600/todos/${id}`).then((res)=> {
+        request.get(`/todos/${id}`).then((res)=> {
             const newMessage = res.data
             console.log(newMessage);
             newMessage.map((item)=> {
